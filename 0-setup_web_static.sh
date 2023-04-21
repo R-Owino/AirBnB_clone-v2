@@ -17,7 +17,6 @@ sudo echo "<html><head><title>Test Page</title></head><body><p>This is a test pa
 
 # Set ownership and permissions
 sudo chown -R ubuntu:ubuntu /data/
-sudo chmod -R 755 /data/
 
 # Remove existing symbolic link if it exists
 sudo rm -rf /data/web_static/current
