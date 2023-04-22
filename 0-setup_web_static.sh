@@ -26,5 +26,27 @@ sudo rm -rf /data/web_static/current
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 # Configure Nginx to serve web_static
-sudo sed -i '48i\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}' /etc/nginx/sites-available/default
+server_config="server {
+		listen 80 default_server;
+		listen [::]:80 default_server;
+		root /var/www/html;
+		index index.html index.htm;
+		server_name _;
+		add_header X-Served-By \$hostname;
+		location /hbnb_static {
+			alias /data/web_static/current;
+			index index.html index.htm;
+		}
+		location /redirect_me {
+			return 301 https://rupert.id.au/python/book/learn-python3-the-hard-way-nov-15-2018.pdf;
+		}
+		error_page 404 /404.html;
+		location = /404.html {
+			internal;
+		}
+	}"
+
+echo -e "$server_config" > /etc/nginx/sites-available/default
+
+# Restart nginx
 sudo service nginx restart
