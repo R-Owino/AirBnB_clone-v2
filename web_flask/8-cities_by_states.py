@@ -4,14 +4,13 @@ Starts a Flask web application that displays a list of States with related
 cities
 """
 from models import storage
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
-@app.route("/states_list", strict_slashes=False)
-def states_list():
+@app.route("/cities_by_states", strict_slashes=False)
+def cities_by_states():
     """
     Displays a HTML page with a list of all State objects
     with related cities sorted by name
