@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Starts a Flask web application that displays a list of States with related 
-cities
+Starts a Flask web application that displays a list of States
+with related cities
 """
 from models import storage
 from flask import Flask, render_template
