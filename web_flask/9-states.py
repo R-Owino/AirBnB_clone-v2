@@ -21,11 +21,12 @@ def states():
 @app.route("/states/<id>", strict_slashes=False)
 def states_id(id):
     """
-    Displays a HTML page with info about <id>, if it exists
+    Displays a HTML page with info about <id>
+    i.e states and its cities if available
     """
     for state in storage.all("State").values():
         if state.id == id:
-            return render_template("9-states.html", state=state)
+            return render_template("9-states.html", state=state, id=id)
     return render_template("9-states.html")
 
 
